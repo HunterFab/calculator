@@ -2,29 +2,35 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css.css">
+    <script src="js.js"></script>
   </head>
-<h1 id="title">Javascript Calculator</h1>
-<canvas></canvas>
+<canvas id="canvas"></canvas>
+<table>
 <div>
-<button class="number"; id="number9">9</button>
-<button class="number"; id="number8">8</button>
-<button class="number"; id="number7">7</button>
-<button class="number"; id="number6">6</button>
-</br>
-<button class="number"; id="number5">5</button>
-<button class="number"; id="number4">4</button>
-<button class="number"; id="number3">3</button>
-<button class="number"; id="number2">2</button>
-</br>
-<button class="number"; id="number1">1</button>
-<button class="number"; id="number0">0</button>
-<button class="operator"; id="plus">+</button>
-<button class="operator"; id="minus">-</button>
-</br>
-<button class="operator"; id="times">*</button>
-<button class="operator"; id="divide">/</button>
-<button class="operator"; id="equals">=</button>
-<button class="operator"; id="decimal">.</button>
+<tr>
+  <th><button class="button"; id="number9"; onclick="nine();">9</button></th>
+  <th><button class="button"; id="number8"; onclick="eight();">8</button></th>
+  <th><button class="button"; id="number7"; onclick="seven();">7</button></th>
+  <th><button class="button"; id="number6"; onclick="six();">6</button></th>
+</tr>
+<tr>
+  <th><button class="button"; id="number5"; onclick="five();">5</button></th>
+  <th><button class="button"; id="number4"; onclick="four();">4</button></th>
+  <th><button class="button"; id="number3"; onclick="three();">3</button></th>
+  <th><button class="button"; id="number2"; onclick="two();">2</button></th>
+</tr>
+<tr>
+  <th><button class="button"; id="number1"; onclick="one();">1</button></th>
+  <th><button class="button"; id="number0"; onclick="zero();">0</button></th>
+  <th><button class="button"; id="plus"; onclick="plus();">+</button></th>
+  <th><button class="button"; id="minus"; onclick="minus();">-</button></th>
+</tr>
+<tr>
+  <th><button class="button"; id="times"; onclick="multiply();">*</button></th>
+  <th><button class="button"; id="divide"; onclick="divide();"> /</button></th>
+  <th><button class="button"; id="equals"; onclick="equal();">=</button></th>
+  <th><button class="button"; id="decimal"; onclick="decimal();"> .</button></th>
+</tr>
 </div>
-
+<table>
 </html>

@@ -1,6 +1,30 @@
-<!DOCTYPE css>
+html {
+  background: #EEFFF8;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 40px;
+  text-decoration: bold;
+  display: inline-block;
+  font-size: 16px;
+  border-color: #000000;
+  border-width: 5px;
+  border-radius: 10px;
+}
 
-.html {
-  text-align: center;
-  font-family: serif;
+button:hover {
+  box-shadow: 0.3em 0.3em 0.3em #777666;
+}
+
+canvas {
+  border-width: 20px;
+  border-color: black;
+  border-radius: 30px
+  color: black;
+  width: 410px;
+}
+
+table {
+  width: 200px;
 }
