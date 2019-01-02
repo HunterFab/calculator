@@ -89,7 +89,9 @@ function equal() {
   context.font = "32px Courier New"
   context.strokeText(`${float}`, 10, 50)
 }
-function display() {
+
+function clear() {
+  float = 0
   var canvas = document.getElementById("canvas");
   const context = canvas.getContext("2d");
   context.clearRect(0, 0, canvas.width, canvas.height)
