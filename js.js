@@ -1,100 +1,59 @@
-var float = 0;
-var store = 0;
-var display = 0;
-function nine() {
-  float = (float * 10) + 9
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function eight() {
-  float = (float * 10) + 8
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function seven() {
-  float = (float * 10) + 7
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function six() {
-  float = (float * 10) + 6
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function five() {
-  float = (float * 10) + 5
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function four() {
-  float = (float * 10) + 4
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function three() {
-  float = (float * 10) + 3
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function two() {
-  float = (float * 10) + 2
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function one() {
-  float = (float * 10) + 1
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function zero() {
-  float = (float * 10) + 0
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
-}
-function equal() {
-  store = float
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
+displayNum = "";
+storedNum = "";
+operation = 0;
+queuedOperation = 0;
+finishedCalculation = false;
+
+function clearDisplay() {
+displayNum = "";
+storedNum = "";
+operation = 0;
+queuedOperation = 0;
+finishedCalculation = false;
+display.value = displayNum
 }
 
-function clear() {
-  float = 0
-  var canvas = document.getElementById("canvas");
-  const context = canvas.getContext("2d");
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.font = "32px Courier New"
-  context.strokeText(`${float}`, 10, 50)
+function numberInput(num) {
+display.value += num;
+}
+
+function setOperation(funct) {
+var display = document.getElementById("display"),
+displayNum = display.value
+  evalDisplay = eval(displayNum);
+  evalStored = eval(storedNum);
+
+if (queuedOperation = 0) {
+  storedNum = displayNum
+}
+else if (queuedOperation = 1) {
+  storedNum = evalStored + evalDisplay
+}
+else if (queuedOperation = 2) {
+  storedNum = evalStored - evalDisplay
+}
+else if (queuedOperation = 3) {
+  storedNum = evalStored * evalDisplay
+}
+else if (queuedOperation = 4) {
+  storedNum = evalStored / evalDisplay
+}
+
+//////////////////////////////////////
+
+if (funct==add) {
+  operation = 1
+}
+else if (funct==subtract) {
+  operation = 2
+}
+else if (funct==multiply) {
+  operation = 3
+}
+else if (funct==divide) {
+  operation = 4
+}
+
+queuedOperation = operation
+
 }

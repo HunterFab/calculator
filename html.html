@@ -4,34 +4,35 @@
     <link rel="stylesheet" type="text/css" href="css.css">
     <script src="js.js"></script>
   </head>
-<canvas id="canvas"></canvas>
+<input type="text" class="calcDisplay" id="display" />
+<br/>
 <table>
 <div>
 <tr>
-  <th><button class="button"; id="clear"; onclick="clear();">C</button></th>
+  <th><button class="button" id="clear" value="c" onclick="clearDisplay();">C</button></th>
 <tr>
-  <th><button class="button"; id="number9"; onclick="nine();">9</button></th>
-  <th><button class="button"; id="number8"; onclick="eight();">8</button></th>
-  <th><button class="button"; id="number7"; onclick="seven();">7</button></th>
-  <th><button class="button"; id="number6"; onclick="six();">6</button></th>
+  <th><button class="button" id="number9" value="9" onclick="numberInput('9');">9</button></th>
+  <th><button class="button" id="number8" value="8" onclick="numberInput('8');">8</button></th>
+  <th><button class="button" id="number7" value="7" onclick="numberInput('7');">7</button></th>
+  <th><button class="button" id="plus" value="+" onclick="setOperation('add')">+</button></th>
 </tr>
 <tr>
-  <th><button class="button"; id="number5"; onclick="five();">5</button></th>
-  <th><button class="button"; id="number4"; onclick="four();">4</button></th>
-  <th><button class="button"; id="number3"; onclick="three();">3</button></th>
-  <th><button class="button"; id="number2"; onclick="two();">2</button></th>
+  <th><button class="button" id="number6" value="6" onclick="numberInput('6');">6</button></th>
+  <th><button class="button" id="number5" value="5" onclick="numberInput('5');">5</button></th>
+  <th><button class="button" id="number4" value="4" onclick="numberInput('4');">4</button></th>
+  <th><button class="button" id="minus" value="-" onclick="setOperation('subtract')">-</button></th>
 </tr>
 <tr>
-  <th><button class="button"; id="number1"; onclick="one();">1</button></th>
-  <th><button class="button"; id="number0"; onclick="zero();">0</button></th>
-  <th><button class="button"; id="plus"; onclick="plus();">+</button></th>
-  <th><button class="button"; id="minus"; onclick="minus();">-</button></th>
+  <th><button class="button" id="number3" value="3" onclick="numberInput('3');">3</button></th>
+  <th><button class="button" id="number2" value="2" onclick="numberInput('2');">2</button></th>
+  <th><button class="button" id="number1" value="1" onclick="numberInput('1');">1</button></th>
+  <th><button class="button" id="times" value="*" onclick="setOperation('multiply')">*</button></th>
 </tr>
 <tr>
-  <th><button class="button"; id="times"; onclick="multiply();">*</button></th>
-  <th><button class="button"; id="divide"; onclick="divide();"> /</button></th>
-  <th><button class="button"; id="equals"; onclick="equal();">=</button></th>
-  <th><button class="button"; id="decimal"; onclick="decimal();"> .</button></th>
+  <th><button class="button" id="number0" value="0" onclick="numberInput('0');">0</button></th>
+  <th><button class="button" id="equals" value="=">=</button></th>
+  <th><button class="button" id="decimal" value="."> .</button></th>
+  <th><button class="button" id="divide" value="/" onclick="setOperation('divide')">/</button></th>
 </tr>
 </div>
 <table>
