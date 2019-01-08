@@ -2,84 +2,76 @@ displayNum = "";
 storedNum = "";
 operation = 0;
 queuedOperation = 0;
-finishedCalculation = false;
+calculationFinished = false;
 
 function clearDisplay() {
-displayNum = "";
-storedNum = "";
-operation = 0;
-queuedOperation = 0;
-finishedCalculation = false;
-display.value = displayNum
-}
+  var display = document.getElementById("display");
+  displayNum = "";
+  storedNum = "";
+  operation = 0;
+  queuedOperation = 0;
+  display.value = displayNum;
 
 function numberInput(num) {
-display.value += num;
+  var display = document.getElementById("display");
+  display.value += num;
 }
 
-function setOperation(funct) {
+
+function setOperation(command) {
 var display = document.getElementById("display"),
-displayNum = display.value
-  evalDisplay = eval(displayNum);
+  displayNum = display.value;
+
+  evalDisplay = eval(displayNum),
   evalStored = eval(storedNum);
 
-if (queuedOperation = 0) {
-  storedNum = displayNum
-}
-else if (queuedOperation = 1) {
-  storedNum = evalStored + evalDisplay
-}
-else if (queuedOperation = 2) {
-  storedNum = evalStored - evalDisplay
-}
-else if (queuedOperation = 3) {
-  storedNum = evalStored * evalDisplay
-}
-else if (queuedOperation = 4) {
-  storedNum = evalStored / evalDisplay
-}
+if (queuedOperation == 0) {
+  storedNum = display.value;
+  }
+else if (queuedOperation == 1) {
+  storedNum = evalStored + evalDisplay;
+  }
+else if (queuedOperation == 2) {
+  storedNum = evalStored - evalDisplay;
+  }
+else if (queuedOperation == 3) {
+  storedNum = evalStored * evalDisplay;
+  }
+if (command == 'add') {
+  operation = 1;
+  }
+else if (command == 'subtract') {
+  operation = 2;
+  }
+else if (command == 'multiply') {
+  operation = 3;
+  }
+else if (command == 'divide')
 
-//////////////////////////////////////
-
-if (funct=="add") {
-  operation = 1
-}
-else if (funct=="subtract") {
-  operation = 2
-}
-else if (funct=="multiply") {
-  operation = 3
-}
-else if (funct=="divide") {
-  operation = 4
-}
-
-queuedOperation = operation
-displayNum = " "
-display.value = displayNum
+  queuedOperation = operation;
+  display.value = '';
 }
 
 function calculation() {
-  var display = document.getElementById("display")
-  displayNum = display.value
-    evalDisplay = eval(displayNum);
-    evalStored = eval(storedNum);
 
-if (operation = 1) {
-  storedNum = evalStored + evalDisplay
+  displayNum = display.value;
+  numDisplay = Number(displayNum),
+  numStored = Number(storedNum);
+
+if (operation == 1) {
+  displayNum = (numStored + numDisplay);
 }
-else if (operation = 2) {
-  storedNum = evalStored - evalDisplay
+else if (operation == 2) {
+  displayNum = (numStored - numDisplay);
 }
-else if (operation = 3) {
-  storedNum = evalStored * evalDisplay
+else if (operation == 3) {
+  displayNum = (numStored * numDisplay);
 }
-else if (operation = 4) {
-  storedNum = evalStored / evalDisplay
+else if (operation == 4) {
+  displayNum = (numStored / numDisplay)
 }
 
-eval(storedNum) = storedNum
-display.value = storedNum
+display.value = displayNum;
 
 //////////////////////////////////////////////
 
