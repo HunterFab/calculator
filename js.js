@@ -4,6 +4,8 @@ var operation = 0;
 var queuedOperation = 0;
 var calculationFinished = false;
 
+////////////////////////////////////////////////////////
+
 function clearDisplay() {
   var display = document.getElementById("display");
   displayNum = "";
@@ -18,11 +20,27 @@ function numberInput(num) {
   display.value += num;
 }
 
+function decimal(dec) {
+  var display = document.getElementById("display");
+  for (i = 0; i < display.value.length; i++)
+    if (display.value.charAt(i) == '.') {
+      return;
+  }
+
+/////////////////////////////////////
+
+  display.value += dec;
+}
+
+/////////////////////////////////////
+
 function setOperation(command) {
 var display = document.getElementById("display"),
   displayNum = display.value;
   var nDisplay = Number(displayNum);
   var nStored = Number(storedNum);
+
+////////////////////////////////////////////////////
 
 if (queuedOperation == 0) {
   storedNum = display.value;
@@ -47,15 +65,21 @@ else if (command == 'multiply') {
   }
 else if (command == 'divide')
 
+/////////////////////////////////////////////////////
+
   queuedOperation = operation;
   display.value = '';
 }
+
+///////////////////////////////////////////////////
 
 function calculation() {
   var display = document.getElementById("display")
   displayNum = display.value;
   var numDisplay = Number(displayNum);
   var numStored = Number(storedNum);
+
+////////////////////////////////////////////////////
 
 if (operation == 1) {
   displayNum = (numStored + numDisplay);
