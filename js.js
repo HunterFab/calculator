@@ -1,8 +1,8 @@
-displayNum = "";
-storedNum = "";
-operation = 0;
-queuedOperation = 0;
-calculationFinished = false;
+var displayNum = "";
+var storedNum = "";
+var operation = 0;
+var queuedOperation = 0;
+var calculationFinished = false;
 
 function clearDisplay() {
   var display = document.getElementById("display");
@@ -11,31 +11,30 @@ function clearDisplay() {
   operation = 0;
   queuedOperation = 0;
   display.value = displayNum;
+}
 
 function numberInput(num) {
   var display = document.getElementById("display");
   display.value += num;
 }
 
-
 function setOperation(command) {
 var display = document.getElementById("display"),
   displayNum = display.value;
-
-  evalDisplay = eval(displayNum),
-  evalStored = eval(storedNum);
+  var nDisplay = Number(displayNum);
+  var nStored = Number(storedNum);
 
 if (queuedOperation == 0) {
   storedNum = display.value;
   }
 else if (queuedOperation == 1) {
-  storedNum = evalStored + evalDisplay;
+  storedNum = nStored + nDisplay;
   }
 else if (queuedOperation == 2) {
-  storedNum = evalStored - evalDisplay;
+  storedNum = nStored - nDisplay;
   }
 else if (queuedOperation == 3) {
-  storedNum = evalStored * evalDisplay;
+  storedNum = nStored * nDisplay;
   }
 if (command == 'add') {
   operation = 1;
@@ -53,10 +52,10 @@ else if (command == 'divide')
 }
 
 function calculation() {
-
+  var display = document.getElementById("display")
   displayNum = display.value;
-  numDisplay = Number(displayNum),
-  numStored = Number(storedNum);
+  var numDisplay = Number(displayNum);
+  var numStored = Number(storedNum);
 
 if (operation == 1) {
   displayNum = (numStored + numDisplay);
@@ -85,7 +84,4 @@ operation = 0;
 queuedOperation = 0;
 displayNum = "";
 storedNum = "";
-
-
-
 }
