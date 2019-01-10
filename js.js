@@ -20,7 +20,7 @@ function numberInput(num) {
   display.value += num;
 }
 
-function decimal(dec) {
+function decimalInput(dec) {
   var display = document.getElementById("display");
   for (i = 0; i < display.value.length; i++)
     if (display.value.charAt(i) == '.') {
