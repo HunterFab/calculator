@@ -6,6 +6,11 @@ var calculationFinished = false;
 
 ////////////////////////////////////////////////////////
 
+//function checkNumber(x, f) {
+  //Number.parseFloat(display.value).toExponential(8) = display.value
+//}
+
+
 function clearDisplay() {
   var display = document.getElementById("display");
   displayNum = "";
@@ -18,6 +23,18 @@ function clearDisplay() {
 function numberInput(num) {
   var display = document.getElementById("display");
   display.value += num;
+
+}
+
+function piInput() {
+  var display =document.getElementById("display");
+  if (display.value == null || display.value == 0) {
+    display.value = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+  }
+  else {
+      display.value *= 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679;
+  }
+
 }
 
 function decimalInput(dec) {
@@ -30,6 +47,8 @@ function decimalInput(dec) {
 /////////////////////////////////////
 
   display.value += dec;
+
+
 }
 
 /////////////////////////////////////
@@ -63,12 +82,28 @@ else if (command == 'subtract') {
 else if (command == 'multiply') {
   operation = 3;
   }
-else if (command == 'divide')
+else if (command == 'divide') {
+  operation = 4;
+}
+else if (command == 'cos') {
+  operation = 5;
+}
+else if (command == 'sin') {
+  operation = 6;
+}
+else if (command == 'tan') {
+  operation = 7
+}
+else if (command == 'signchange') {
+  operation = 8
+  // unopperational
+}
 
 /////////////////////////////////////////////////////
 
   queuedOperation = operation;
   display.value = '';
+
 }
 
 ///////////////////////////////////////////////////
@@ -93,8 +128,21 @@ else if (operation == 3) {
 else if (operation == 4) {
   displayNum = (numStored / numDisplay)
 }
+else if (operation == 5) {
+  displayNum = (Math.cos(numDisplay))
+}
+else if (operation == 6) {
+  displayNum = (Math.sin(numDisplay))
+}
+else if (operation == 7) {
+  displayNum = (Math.tan(numDisplay))
+}
+else if (operation == 8) {
+  displayNum = -1 * numDisplay
+}
 
 display.value = displayNum;
+
 
 //////////////////////////////////////////////
 
