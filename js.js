@@ -6,10 +6,12 @@ var calculationFinished = false;
 
 ////////////////////////////////////////////////////////
 
-//function checkNumber(x, f) {
-  //Number.parseFloat(display.value).toExponential(8) = display.value
-//}
+function checkNumber() {
+  if (display.value < 1) {
+    display.value = Math.round(display.value * 10000000) / 10000000
+  }
 
+}
 
 function clearDisplay() {
   var display = document.getElementById("display");
@@ -47,7 +49,6 @@ function decimalInput(dec) {
 /////////////////////////////////////
 
   display.value += dec;
-
 
 }
 
@@ -94,10 +95,10 @@ else if (command == 'sin') {
 else if (command == 'tan') {
   operation = 7
 }
-else if (command == 'signchange') {
+else if (command == 'power') {
   operation = 8
-  // unopperational
 }
+
 
 /////////////////////////////////////////////////////
 
@@ -138,11 +139,10 @@ else if (operation == 7) {
   displayNum = (Math.tan(numDisplay))
 }
 else if (operation == 8) {
-  displayNum = -1 * numDisplay
+  displayNum = Math.pow(numStored, numDisplay)
 }
 
-display.value = displayNum;
-
+  display.value = displayNum;
 
 //////////////////////////////////////////////
 
@@ -156,4 +156,27 @@ operation = 0;
 queuedOperation = 0;
 displayNum = "";
 storedNum = "";
+
+}
+
+function signchange() {
+  var display = document.getElementById("display")
+  displayNum = display.value;
+  var numDisplay = Number(displayNum);
+  var numStored = Number(storedNum);
+
+  displayNum = -1 * numDisplay
+  display.value = displayNum
+
+}
+
+function percentage() {
+  var display = document.getElementById("display")
+  displayNum = display.value;
+  var numDisplay = Number(displayNum);
+  var numStored = Number(storedNum);
+
+  displayNum = numDisplay / 100
+  display.value = displayNum
+
 }
