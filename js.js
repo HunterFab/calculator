@@ -1,148 +1,138 @@
 var displayNum = "";
-var storedNum = "";
+var displayString = "";
 var operation = 0;
 var queuedOperation = 0;
 var calculationFinished = false;
+var decimalPoint = false;
+var symbol = false;
+var error = false;
+var oneSymbol == false;
 
 ////////////////////////////////////////////////////////
 
-function checkNumber() {
-  if (display.value < 1) {
-    display.value = Math.round(display.value * 10000000) / 10000000
-  }
-
-}
-
 function clearDisplay() {
-  var display = document.getElementById("display");
   displayNum = "";
-  storedNum = "";
+  displayString = "";
   operation = 0;
   queuedOperation = 0;
-  display.value = displayNum;
+  document.getElementById("display").innerHTML = ""
+  decimalPoint = false;
+  symbol = false;
+  error = false;
 }
 
 function numberInput(num) {
-  var display = document.getElementById("display");
-  display.value += num;
 
+  if (error == false) {
+
+    if (oneSymbol == false) {
+      displayString += `${num}`
+      document.getElementById("display").innerHTML = Number(displayString).toLocaleString();
+      displayNum = Number(displayString)
+      symbol = false;
+      storedNum = Number(displayString)
+    }
+    else if (oneSymbol == true) {
+      let anumber = ""
+      anumber += `${num}`
+      document.getElementById("display").innerHTML
+    }
+  }
 }
 
-function piInput() {
-  var display =document.getElementById("display");
-  if (display.value == null || display.value == 0) {
-    display.value = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
-  }
-  else {
-      display.value *= 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679;
-  }
 
+function piInput() {
+  if (error == false) {
+
+    if (displayNum = null || displayNum == 0) {
+      document.getElementById("display").innerHTML = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+    }
+    else {
+        document.getElementById("display").innerHTML = (Number(displayString) * 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679).toLocaleString();
+    }
+  }
 }
 
 function decimalInput(dec) {
-  var display = document.getElementById("display");
-  for (i = 0; i < display.value.length; i++)
-    if (display.value.charAt(i) == '.') {
-      return;
+
+  if (error == false) {
+
+  if (decimalPoint == false) {
+     displayString += '.';
+     document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + ".";
+     decimalPoint = true;
+}
+  else {
+    return;
   }
 
-/////////////////////////////////////
-
-  display.value += dec;
-
 }
-
+}
 /////////////////////////////////////
 
 function setOperation(command) {
-var display = document.getElementById("display"),
-  displayNum = display.value;
-  var nDisplay = Number(displayNum);
-  var nStored = Number(storedNum);
 
 ////////////////////////////////////////////////////
+if (error == false) {
 
-if (queuedOperation == 0) {
-  storedNum = display.value;
+if (command == 0) {
+  return;
   }
-else if (queuedOperation == 1) {
-  storedNum = nStored + nDisplay;
+else if (command == "add" || symbol == false) {
+  document.getElementById('display').innerHTML += " + ";
+  symbol == true
+  oneSymbol == true
   }
-else if (queuedOperation == 2) {
-  storedNum = nStored - nDisplay;
+else if (command == "subtract" || symbol == false) {
+  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " - ";
+  symbol == true
+  oneSymbol == true
   }
-else if (queuedOperation == 3) {
-  storedNum = nStored * nDisplay;
+else if (command == "multiply" || symbol == false) {
+  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " * ";
+  symbol == true
+  oneSymbol == true
   }
-if (command == 'add') {
-  operation = 1;
+else if (command == "divide" || symbol == false) {
+  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " / ";
+  symbol == true
+  oneSymbol == true
   }
-else if (command == 'subtract') {
-  operation = 2;
+else if (command == "power" || symbol == false) {
+  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " ^ ";
+  symbol == true
+  oneSymbol == true
   }
-else if (command == 'multiply') {
-  operation = 3;
-  }
-else if (command == 'divide') {
-  operation = 4;
-}
-else if (command == 'cos') {
-  operation = 5;
-}
-else if (command == 'sin') {
-  operation = 6;
-}
-else if (command == 'tan') {
-  operation = 7
-}
-else if (command == 'power') {
-  operation = 8
-}
-
 
 /////////////////////////////////////////////////////
 
-  queuedOperation = operation;
-  display.value = '';
-
+}
 }
 
 ///////////////////////////////////////////////////
 
 function calculation() {
-  var display = document.getElementById("display")
-  displayNum = display.value;
-  var numDisplay = Number(displayNum);
-  var numStored = Number(storedNum);
+  if (error == false) {
+
+  let finalCalculation = eval(displayString)
+  if (finalCalculation == Infinity) {
+    document.getElementById("display").innerHTML = "Error"
+    error = true
+  }
+  else if (finalCalculation>=1000000000) {
+    let exponent = finalCalculation.toString().length-1;
+    document.getElementById('addition').innerHTML = finalCalculation / (10 ** (exponent)) + 'e' + exponent;
+
+    }
+    else {
+      document.getElementById('addition').innerHTML = finalCalculation.toLocaleString();
+  }
+
+}
 
 ////////////////////////////////////////////////////
 
-if (operation == 1) {
-  displayNum = (numStored + numDisplay);
-}
-else if (operation == 2) {
-  displayNum = (numStored - numDisplay);
-}
-else if (operation == 3) {
-  displayNum = (numStored * numDisplay);
-}
-else if (operation == 4) {
-  displayNum = (numStored / numDisplay)
-}
-else if (operation == 5) {
-  displayNum = (Math.cos(numDisplay))
-}
-else if (operation == 6) {
-  displayNum = (Math.sin(numDisplay))
-}
-else if (operation == 7) {
-  displayNum = (Math.tan(numDisplay))
-}
-else if (operation == 8) {
-  displayNum = Math.pow(numStored, numDisplay)
-}
 
-  display.value = displayNum;
 
 //////////////////////////////////////////////
 
