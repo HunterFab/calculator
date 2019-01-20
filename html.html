@@ -4,25 +4,26 @@
     <link rel="stylesheet" type="text/css" href="css.css">
     <script src="js.js"></script>
   </head>
-<h3 class="calcDisplay" id="display"></h3>
+<h4 class="calcDisplay" id="display">0</h4>
 <br/>
 <table>
 <div>
 <tr>
   <th><button class="button" id="clear" value="c" onclick="clearDisplay();">AC</button></th>
+  <th><button class="button" id="function" value=% onclick="setOperation('percentage');">%</button></th>
+  <th><button class="button" id="function" value=± onclick="setOperation('signchange');">±</button></th>
+  <th><button class="button" id="jahcoin" value=ripjahseh onclick="jahCoin();">JahCoin™</button></th>
 <tr>
   <th><button class="button" id="number" value=9 onclick="numberInput('9');">9</button></th>
   <th><button class="button" id="number" value=8 onclick="numberInput('8');">8</button></th>
   <th><button class="button" id="number" value=7 onclick="numberInput('7');">7</button></th>
   <th><button class="button" id="plus" value=+ onclick="setOperation('add');">+</button></th>
-  <th><button class="button" id="pi" value=π onclick="piInput('π');">π</button></th>
 </tr>
 <tr>
   <th><button class="button" id="number" value=6 onclick="numberInput('6');">6</button></th>
   <th><button class="button" id="number" value=5 onclick="numberInput('5');">5</button></th>
   <th><button class="button" id="number" value=4 onclick="numberInput('4');">4</button></th>
   <th><button class="button" id="function" value=- onclick="setOperation('subtract');">-</button></th>
-  <th><button class="button" id="function" value=^ onclick="setOperation('power');">^</button></th>
 
 </tr>
 <tr>
@@ -30,14 +31,12 @@
   <th><button class="button" id="number" value=2 onclick="numberInput('2');">2</button></th>
   <th><button class="button" id="number" value=1 onclick="numberInput('1');">1</button></th>
   <th><button class="button" id="function" value=* onclick="setOperation('multiply');">*</button></th>
-  <th><button class="button" id="function" value=% onclick="percentage();">%</button></th>
 </tr>
 <tr>
   <th><button class="button" id="number" value=0 onclick="numberInput('0');">0</button></th>
   <th><button class="button" id="equals" value="=" onclick="calculation();">=</button></th>
   <th><button class="button" id="function" value=. onclick="decimalInput('.');"> .</button></th>
   <th><button class="button" id="function" value=/ onclick="setOperation('divide');">/</button></th>
-  <th><button class="button" id="function" value=+- onclick="signchange();">+/-</button></th>
 </tr>
 </div>
 <table>

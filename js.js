@@ -1,65 +1,45 @@
-var displayNum = "";
-var displayString = "";
+var string = "";
 var operation = 0;
-var queuedOperation = 0;
-var calculationFinished = false;
 var decimalPoint = false;
 var symbol = false;
 var error = false;
-var oneSymbol == false;
+var number = ""
 
 ////////////////////////////////////////////////////////
 
 function clearDisplay() {
-  displayNum = "";
-  displayString = "";
+  string = "";
   operation = 0;
-  queuedOperation = 0;
-  document.getElementById("display").innerHTML = ""
+  document.getElementById("display").innerHTML = "0"
   decimalPoint = false;
   symbol = false;
   error = false;
+  number = ""
+
 }
 
 function numberInput(num) {
 
   if (error == false) {
+    let testNumber = number.toString().length
+    if (testNumber < 9)
+    number += num
+    document.getElementById("display").innerHTML = Number(number).toLocaleString();
+    }
 
-    if (oneSymbol == false) {
-      displayString += `${num}`
-      document.getElementById("display").innerHTML = Number(displayString).toLocaleString();
-      displayNum = Number(displayString)
-      symbol = false;
-      storedNum = Number(displayString)
-    }
-    else if (oneSymbol == true) {
-      let anumber = ""
-      anumber += `${num}`
-      document.getElementById("display").innerHTML
-    }
-  }
 }
 
-
-function piInput() {
-  if (error == false) {
-
-    if (displayNum = null || displayNum == 0) {
-      document.getElementById("display").innerHTML = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
-    }
-    else {
-        document.getElementById("display").innerHTML = (Number(displayString) * 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679).toLocaleString();
-    }
-  }
-}
 
 function decimalInput(dec) {
 
   if (error == false) {
 
   if (decimalPoint == false) {
-     displayString += '.';
-     document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + ".";
+    if (number == "") {
+      number = 0
+    }
+     number += '.';
+     document.getElementById('display').innerHTML = Number(number).toLocaleString() + ".";
      decimalPoint = true;
 }
   else {
@@ -78,33 +58,80 @@ if (error == false) {
 if (command == 0) {
   return;
   }
-else if (command == "add" || symbol == false) {
-  document.getElementById('display').innerHTML += " + ";
-  symbol == true
-  oneSymbol == true
-  }
-else if (command == "subtract" || symbol == false) {
-  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " - ";
-  symbol == true
-  oneSymbol == true
-  }
-else if (command == "multiply" || symbol == false) {
-  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " * ";
-  symbol == true
-  oneSymbol == true
-  }
-else if (command == "divide" || symbol == false) {
-  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " / ";
-  symbol == true
-  oneSymbol == true
-  }
-else if (command == "power" || symbol == false) {
-  document.getElementById('display').innerHTML = Number(displayString).toLocaleString() + " ^ ";
-  symbol == true
-  oneSymbol == true
-  }
 
-/////////////////////////////////////////////////////
+  if (command == "add") {
+  if (number == "") {
+    number = 0
+  }
+  string += number + "+";
+  symbol = true
+  decimalPoint = false
+  number = ""
+  document.getElementById("display").innerHTML = "+"
+  }
+else if (command == "subtract") {
+  if (symbol == false) {
+    string = string.slice(0,string.length - 1)
+  }
+  if (number == "") {
+    number = 0
+  }
+  string += number + "-";
+  symbol = true
+  decimalPoint = false
+  number = ""
+  document.getElementById("display").innerHTML = "-"
+  }
+else if (command == "multiply") {
+  if (symbol == false) {
+    string = string.slice(0,string.length - 1)
+  }
+  if (number == "") {
+    number = 0
+  }
+  string += number + "*";
+  symbol = true
+  decimalPoint = false
+  number = ""
+  document.getElementById("display").innerHTML = "*"
+  }
+else if (command == "divide") {
+  if (symbol == false) {
+    string = string.slice(0,string.length - 1)
+  }
+  if (number == "") {
+    number = 0
+  }
+  string += number + "/";
+  symbol = true
+  decimalPoint = false
+  number = ""
+  document.getElementById("display").innerHTML = "/"
+  }
+else if (command == "percentage") {
+  if (symbol == false) {
+    string = string.slice(0,string.length - 1)
+  }
+  if (number == "") {
+    number = 0
+  }
+  string += number + "/100"
+  number = ""
+  decimalPoint = false
+  document.getElementById("display").innerHTML = "%"
+}
+else if (command == "signchange") {
+  if (symbol == false) {
+    string = string.slice(0,string.length - 1)
+  }
+  if (number == "") {
+    number = 0
+  }
+  string += number + "*-1"
+  number = ""
+  decimalPoint = false
+  document.getElementById("display").innerHTML = "±"
+}
 
 }
 }
@@ -112,32 +139,27 @@ else if (command == "power" || symbol == false) {
 ///////////////////////////////////////////////////
 
 function calculation() {
+  if (number == '0') {
+    string += "0"
+  }
+  else {
+    string += number
+  }
   if (error == false) {
 
-  let finalCalculation = eval(displayString)
+  let finalCalculation = eval(string)
   if (finalCalculation == Infinity) {
     document.getElementById("display").innerHTML = "Error"
     error = true
   }
-  else if (finalCalculation>=1000000000) {
+  else if (finalCalculation >= 1000000000) {
     let exponent = finalCalculation.toString().length-1;
-    document.getElementById('addition').innerHTML = finalCalculation / (10 ** (exponent)) + 'e' + exponent;
-
+    document.getElementById('display').innerHTML = finalCalculation / (10 ** (exponent)) + 'e' + exponent;;
     }
     else {
-      document.getElementById('addition').innerHTML = finalCalculation.toLocaleString();
+      document.getElementById('display').innerHTML = finalCalculation.toLocaleString();
   }
-
-}
-
-////////////////////////////////////////////////////
-
-
-
-//////////////////////////////////////////////
-
-if (operation != 0) {
-  finsihedCalculation = true
+  number = finalCalculation
 }
 
 /////////////////////////////////////////////
@@ -149,24 +171,6 @@ storedNum = "";
 
 }
 
-function signchange() {
-  var display = document.getElementById("display")
-  displayNum = display.value;
-  var numDisplay = Number(displayNum);
-  var numStored = Number(storedNum);
-
-  displayNum = -1 * numDisplay
-  display.value = displayNum
-
-}
-
-function percentage() {
-  var display = document.getElementById("display")
-  displayNum = display.value;
-  var numDisplay = Number(displayNum);
-  var numStored = Number(storedNum);
-
-  displayNum = numDisplay / 100
-  display.value = displayNum
-
+function jahCoin() {
+  document.getElementById("display").innerHTML = "spotlight uh moonlight uh"
 }
