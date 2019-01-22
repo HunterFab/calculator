@@ -30,10 +30,10 @@ html {
 h4 {
   width: 400px;
   background-image: url("https://www.gannett-cdn.com/-mm-/d0cf53e4edaae92dcdda3d8c19b3a79610778f26/c=163-0-2004-1384/local/-/media/2017/01/14/DetroitFreePress/DetroitFreePress/636200263251059316-GettyImages-464453726.jpg?width=534&height=401&fit=crop");
-  transform: translate(93%);
   text-align: left;
   color: white;
   padding-left: 10px;
+  margin: 0 auto;
 }
 
 th {
